@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  spa-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" # Приложение будет доступно на http://localhost
+    environment:
+      - VITE_API_URL=http://host.docker.internal:8000 # Для связи с моком, запущенным на хост-машине
+    restart: unless-stopped
